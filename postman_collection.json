@@ -1,0 +1,133 @@
+{
+  "info": {
+    "name": "SocialSpot Full API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Signup",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"firstName\": \"Alice\", \"lastName\": \"Dupont\", \"email\": \"alice@example.com\"}"
+        },
+        "url": {
+          "raw": "http://localhost:4000/api/auth/signup",
+          "host": [
+            "http://localhost:4000"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "signup"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Verify OTP",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\": \"alice@example.com\", \"otp\": \"123456\", \"password\": \"S3cret!\"}"
+        },
+        "url": {
+          "raw": "http://localhost:4000/api/auth/verify-otp",
+          "host": [
+            "http://localhost:4000"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "verify-otp"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Signin",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\": \"alice@example.com\", \"password\": \"S3cret!\"}"
+        },
+        "url": {
+          "raw": "http://localhost:4000/api/auth/signin",
+          "host": [
+            "http://localhost:4000"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "signin"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Refresh",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"refreshToken\": \"<token>\"}"
+        },
+        "url": {
+          "raw": "http://localhost:4000/api/auth/refresh-token",
+          "host": [
+            "http://localhost:4000"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "refresh-token"
+          ]
+        }
+      }
+    },
+    {
+      "name": "List Ads",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/api/ads",
+          "host": [
+            "http://localhost:4000"
+          ],
+          "path": [
+            "api",
+            "ads"
+          ]
+        }
+      }
+    }
+  ]
+}

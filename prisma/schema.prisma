@@ -1,0 +1,55 @@
+model InternetAccess {
+  id         Int      @id @default(autoincrement())
+  user       User     @relation(fields: [userId], references: [id])
+  userId     Int
+  adId       Int?
+  startTime  DateTime
+  endTime    DateTime
+  createdAt  DateTime @default(now())
+  renewed    Boolean  @default(false)
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int      @id @default(autoincrement())
+  firstName     String
+  lastName      String
+  email         String   @unique
+  emailVerified Boolean  @default(false)
+  password      String?
+  otpCode       String?
+  otpExpiry     DateTime?
+  role          String   @default("user")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  RefreshToken  RefreshToken[]
+  Ad            Ad[]
+}
+
+model RefreshToken {
+  id         Int      @id @default(autoincrement())
+  token      String   @unique
+  expiresAt  DateTime
+  revokedAt  DateTime?
+  createdAt  DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     Int
+}
+
+model Ad {
+  id        Int      @id @default(autoincrement())
+  adType    String
+  content   String
+  userId    Int?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User?    @relation(fields: [userId], references: [id])
+}
